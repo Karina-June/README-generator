@@ -33,10 +33,10 @@ const questions =   [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
+function writeToFile(README, data) {
     {
-    fs (fileName, data);
-    console.log(`wrote data to ${filename}`);
+    fs(README, data);
+    console.log(`wrote data to ${README}`);
      } (error) {
         console.log(`got an error ${error.message}`)
     }
