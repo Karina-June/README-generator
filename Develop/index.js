@@ -2,6 +2,10 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
+const config = require('./config.js');
+const mysql = require('mysql2');
+
+
 // TODO: Create an array of questions for user input
 const questions = [
 {
@@ -32,7 +36,7 @@ const questions = [
     message: 'Please enter email address.'
 }];
 // TODO: Create a function to write README file
-fs.writeFile('README.md', 'questions', (err) => {
+fs.writeFile('README.md', 'README File', (err) => {
     if (err)
       console.log(err);
     else {
@@ -43,9 +47,19 @@ fs.writeFile('README.md', 'questions', (err) => {
   });
 
 
-
 // TODO: Create a function to initialize app
-function init() {}
+
+function init() {
+
+
+    const { host, port, user, password, database } = config.database;
+    
+    const leela = mysql.createLeela({ host, port, user, password });
+      
+    leela.query(`CREATE DATABASE IF NOT EXISTS \`${database}\`;`);
+ 
+ }
+
 
 // Function call to initialize app
 init();
