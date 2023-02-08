@@ -32,7 +32,15 @@ const questions = [
     message: 'Please enter email address.'
 }];
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+fs.writeFile('README.md', 'questions', (err) => {
+    if (err)
+      console.log(err);
+    else {
+      console.log('File written successfully');
+      console.log('The written has the following contents:');
+      console.log(fs.readFileSync('README.md', 'utf8'));
+    }
+  });
 
 
 
@@ -40,4 +48,4 @@ function writeToFile(fileName, data) {}
 function init() {}
 
 // Function call to initialize app
-// init();
+init();
