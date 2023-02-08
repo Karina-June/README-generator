@@ -1,8 +1,9 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
+const inquirer = require('inquirer');
 
 // TODO: Create an array of questions for user input
-const questions =   [
+const questions = [
 {
     type: 'input',
     name: 'name',
@@ -29,21 +30,14 @@ const questions =   [
     type: 'input',
     name: 'email',
     message: 'Please enter email address.'
-}
-];
-
+}];
 // TODO: Create a function to write README file
-function writeToFile(README, data) {
-    {
-    fs(README, data);
-    console.log(`wrote data to ${README}`);
-     } (error) {
-        console.log(`got an error ${error.message}`)
-    }
-}
+function writeToFile(fileName, data) {}
+
+
 
 // TODO: Create a function to initialize app
 function init() {}
 
 // Function call to initialize app
-init();
+// init();
