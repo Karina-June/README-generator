@@ -1,9 +1,9 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
+const generateMarkdown = require('./utils/generateMarkdown');
 
-const config = require('./config.js');
-const mysql = require('mysql2');
+
 
 
 // TODO: Create an array of questions for user input
@@ -36,30 +36,30 @@ const questions = [
     message: 'Please enter email address.'
 }];
 // TODO: Create a function to write README file
-fs.writeFile('README.md', 'README File', (err) => {
+function writtenFile(text) {
+  fs.writeFile('README.md', text, (err) => {
     if (err)
       console.log(err);
     else {
       console.log('File written successfully');
-      console.log('The written has the following contents:');
-      console.log(fs.readFileSync('README.md', 'utf8'));
     }
-  });
+  })
+};
 
 
 // TODO: Create a function to initialize app
 
 function init() {
+  inquirer
+    .prompt(questions)
+    .then((answers) => {
+      console.log(answers);
 
+      const markdown = generateMarkdown(answers)
+      writtenFile(markdown)
 
-    const { host, port, user, password, database } = config.database;
-    
-    const leela = mysql.createLeela({ host, port, user, password });
-      
-    leela.query(`CREATE DATABASE IF NOT EXISTS \`${database}\`;`);
- 
- }
-
+})
+}
 
 // Function call to initialize app
 init();
